@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Usage: tec-gcc <file>.c -o a.out
+
+CC=$(which gcc)
+TEC=$(which tec)
+FILE="$1"
+
+shift
+
+"$CC" -E "$FILE" | "$TEC" - | "$TEC" -xc - "$@"

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Usage: tec-clang <file>.c -o a.out
+
+CC=$(which clang)
+TEC=$(which tec)
+FILE="$1"
+
+shift
+
+"$CC" -E "$FILE" | "$TEC" - | "$CC" -xc - "$@"
